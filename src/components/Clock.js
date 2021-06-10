@@ -17,7 +17,7 @@ class Clock extends React.Component{
         const {months, days} = helper.constants;
 
         const ctx = this.cvsRef.current.getContext('2d');
-        ctx.clearRect(0, 0, 600, 600);
+        ctx.clearRect(0, 0, 800, 600);
 
         const date = new Date();
         ctx.textAlign = "center";
@@ -32,18 +32,20 @@ class Clock extends React.Component{
             apm = "PM";
         }
 
-        ctx.fillText(`${leadZero(h)} : ${leadZero(date.getMinutes())} : ${leadZero(date.getSeconds())}  ${apm}`, 300, 250);
+        ctx.fillText(`${leadZero(h)} : ${leadZero(date.getMinutes())} : ${leadZero(date.getSeconds())}  ${apm}`, 400, 250);
 
         ctx.font = "2.4em Arial";
         ctx.strokeStyle = "aliceblue";
-        ctx.strokeText(`${months[date.getMonth()]} ${date.getDate()} - ${days[date.getDay()]}`, 300, 350);
+        ctx.strokeText(`${months[date.getMonth()]} ${date.getDate()} - ${days[date.getDay()]}`, 400, 350);
+
+        document.title = `${leadZero(date.getMinutes())}:${leadZero(date.getSeconds())}`;
 
         requestAnimationFrame(this.tick);
     }
 
     render() {
         return(
-            <canvas width={ 600 } height={ 600 } ref={ this.cvsRef }/>
+            <canvas width={ 800 } height={ 600 } ref={ this.cvsRef }/>
         );
     }
 }

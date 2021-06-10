@@ -1,4 +1,4 @@
-# Clockkkk
+# Clockkkkk
 
 ### Description
 
@@ -31,7 +31,7 @@ Then your browser will pop up a new window at localhost:3000 with the app.
 
 ### Deployed
 
-[client](https://clockkkk.herokuapp.com/)
+[client](https://clockkkkk.herokuapp.com/)
 
 ### Contact
 
