@@ -10,6 +10,19 @@ class Clock extends React.Component{
 
     componentDidMount() {
         requestAnimationFrame(this.tick);
+        this.updateTitle();
+        this.titleInterval = setInterval(this.updateTitle, 60000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.titleInterval);
+    }
+
+    updateTitle =  () => {
+        const leadZero = helper.functions.leadZero;
+
+        const time = new Date();
+        document.title = `${leadZero(time.getHours())}:${leadZero(time.getMinutes())}`
     }
 
     tick = () => {
@@ -22,23 +35,25 @@ class Clock extends React.Component{
         const date = new Date();
         ctx.textAlign = "center";
 
-
-        ctx.font = "3.6em Orbitron, monospace";
+        ctx.font = "4.8em Syne Mono, monospace";
         ctx.fillStyle = "#a29bfe";
         let apm = "AM";
         let h = date.getHours();
+        let newH;
         if(h > 12){
-            h -= 12;
+            newH = leadZero(h - 12);
             apm = "PM";
+        }else{
+            newH = leadZero(h);
         }
+        const m = leadZero(date.getMinutes());
+        const s = leadZero(date.getSeconds());
 
-        ctx.fillText(`${leadZero(h)} : ${leadZero(date.getMinutes())} : ${leadZero(date.getSeconds())}  ${apm}`, 400, 250);
+        ctx.fillText(`${newH}:${m}:${s} ${apm}`, 400, 250);
 
-        ctx.font = "2.4em Arial";
-        ctx.strokeStyle = "aliceblue";
+        ctx.font = "2.4em Montserrat, sans-serif";
+        ctx.strokeStyle = "#ff7675";
         ctx.strokeText(`${months[date.getMonth()]} ${date.getDate()} - ${days[date.getDay()]}`, 400, 350);
-
-        document.title = `${leadZero(date.getMinutes())}:${leadZero(date.getSeconds())}`;
 
         requestAnimationFrame(this.tick);
     }
