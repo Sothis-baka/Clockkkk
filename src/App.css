@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Syne+Mono&display=swap');
-
-body{
-    overflow: hidden;
-
-    background-color: #2d3436;
+*{
+    margin: 0;
+    padding: 0;
 }
 
 .App{
@@ -13,15 +11,70 @@ body{
     justify-content: center;
 
     height: 100vh;
+
+    overflow: hidden;
+    background-color: #2d3436;
 }
 
+.App.day{
+    background-color: aliceblue;
+}
+
+/* icons */
+#toolBar{
+    position: absolute;
+
+    left: 5em;
+    top: 5em;
+}
+
+button{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+
+    border:none;
+
+    cursor: pointer;
+
+    background-color: transparent;
+}
+
+.bi{
+    height: 2em;
+    width: 2em;
+}
+
+.bi:hover{
+    opacity: 0.8;
+}
+
+.bi-sun-fill{
+    color: #ff7675;
+}
+
+.bi-moon-fill{
+    color: #fdcb6e;
+}
+
+.bi-fullscreen{
+    margin-left: 2em;
+
+    color: #fdcb6e;
+}
+
+.day .bi-fullscreen{
+    color: #ff7675;
+}
+
+/* adjust screen sizes */
 @media screen and (max-width: 720px) {
     body {
-        font-size: 0.8em;
+        font-size: 0.64em;
     }
 }
 @media screen and (max-width: 480px) {
     body {
-        font-size: 0.6em;
+        font-size: 0.48em;
     }
 }

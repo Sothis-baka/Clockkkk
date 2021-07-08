@@ -36,7 +36,8 @@ class Clock extends React.Component{
         ctx.textAlign = "center";
 
         ctx.font = "4.8em Syne Mono, monospace";
-        ctx.fillStyle = "#a29bfe";
+        this.props.night ? ctx.fillStyle = "#81ecec" : ctx.fillStyle = "#2e86de";
+
         let apm = "AM";
         let h = date.getHours();
         let newH;
@@ -52,7 +53,8 @@ class Clock extends React.Component{
         ctx.fillText(`${newH}:${m}:${s} ${apm}`, 400, 250);
 
         ctx.font = "2.4em Montserrat, sans-serif";
-        ctx.strokeStyle = "#ff7675";
+        this.props.night ? ctx.strokeStyle = "#FFC312" : ctx.strokeStyle = "#ee5253";
+
         ctx.strokeText(`${months[date.getMonth()]} ${date.getDate()} - ${days[date.getDay()]}`, 400, 350);
 
         requestAnimationFrame(this.tick);
